@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1e44oayyf1v1"]
+
+[ext_resource type="Script" path="res://lvlone/apple.gd" id="1_p1cfn"]
+[ext_resource type="Texture2D" uid="uid://chwppo320w8vw" path="res://lvlone/apple.png" id="1_rpewf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kirl6"]
+radius = 21.0
+height = 56.0
+
+[node name="Apple" type="Area2D"]
+script = ExtResource("1_p1cfn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 8)
+scale = Vector2(2, 2)
+texture = ExtResource("1_rpewf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kirl6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

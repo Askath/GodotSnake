@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://beoepxi7otd42"]
+
+[ext_resource type="Script" path="res://lvlone/lvlone.gd" id="1_1lexo"]
+[ext_resource type="PackedScene" uid="uid://crmmf4cdk2v1r" path="res://player/Player.tscn" id="1_qiskg"]
+
+[node name="Lvlone" type="Node2D"]
+script = ExtResource("1_1lexo")
+
+[node name="Player" parent="." instance=ExtResource("1_qiskg")]
+position = Vector2(984, 527)
+
+[node name="CountdownLabel" type="Label" parent="."]
+offset_left = 953.0
+offset_top = 295.0
+offset_right = 1010.0
+offset_bottom = 432.0
+theme_override_font_sizes/font_size = 100
+
+[node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="AppleSpawn" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 58.0
+offset_top = 20.0
+offset_right = 98.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="CountdownTimer" to="Player" method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="AppleSpawn" to="." method="_on_apple_spawn_timeout"]
